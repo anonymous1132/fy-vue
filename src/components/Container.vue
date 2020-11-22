@@ -1,11 +1,13 @@
 <template>
   <el-container>
-    <el-aside width="auto"><Menu></Menu></el-aside>
+    <el-aside width="auto"
+      ><Menu :active="$store.getters.editableTabsValue"></Menu
+    ></el-aside>
     <el-main>
-      <div>
+      <div class="main">
         <tab-component></tab-component>
         <keep-alive>
-          <div style="background-color: white">
+          <div class="content-wrap">
             <router-view />
           </div>
         </keep-alive>
@@ -15,15 +17,24 @@
 </template>
 
 <script>
-import Menu from "./Menu";
-import TabComponent from "./TabComponents"
+import Menu from "../components/framework/menu/FyMenu";
+import TabComponent from "./TabComponents";
 export default {
-  components: { Menu,TabComponent },
+  components: { Menu, TabComponent },
 };
 </script>
 
 <style  scoped>
 .el-container {
   height: calc(100% - 60px);
+}
+
+.content-wrap {
+  background-color: white;
+  height: calc(100% - 60px);
+}
+
+.main {
+  height: 100%;
 }
 </style>

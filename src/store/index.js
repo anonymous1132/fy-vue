@@ -6,9 +6,9 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
-    editableTabsValue:Auth.getEditableTabsValue() || '/container/home',
+    editableTabsValue:Auth.getEditableTabsValue() || '/home',
     /*tab数组*/
-    editableTabs:Auth.getEditableTabs() || [{title:'首页',name:'/container/home'}],
+    editableTabs:Auth.getEditableTabs() || [{title:'首页',name:'/home',fixed:true}],
   },
   /** 计算属性 */
   getters: {
@@ -19,8 +19,8 @@ export default new Vuex.Store({
   mutations: {
     //退出登录时注销tab
     ACCOUNT_LOGOUT_FAILURE(state) {
-      state.editableTabsValue = '/container/home';
-      state.editableTabs = [{ title: '首页', name: '/container/home' }];
+      state.editableTabsValue = '/home';
+      state.editableTabs = [{ title: '首页', name: '/home' }];
       //其他代码
       Auth.removeEditableTabs();
       Auth.removeEditableTabsValue()
