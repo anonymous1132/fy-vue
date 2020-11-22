@@ -1,10 +1,29 @@
 <template>
   <div id="app">
     <el-container><el-header>head</el-header></el-container>
-    <router-view />
+    <el-container class="main-container">
+      <el-aside width="auto"
+        ><Menu :active="$store.getters.editableTabsValue"></Menu
+      ></el-aside>
+      <el-main>
+        <div class="main">
+          <tab-component></tab-component>
+          <keep-alive>
+            <div class="content-wrap">
+              <router-view />
+            </div>
+          </keep-alive>
+        </div>
+      </el-main>
+    </el-container>
   </div>
 </template>
 <script>
+import Menu from "./components/framework/menu/FyMenu";
+import TabComponent from "./components/TabComponents";
+export default {
+  components: { Menu, TabComponent },
+};
 </script>
 <style>
 body {
@@ -21,16 +40,14 @@ body {
 
 .el-header,
 .el-footer {
-  background-color: #B3C0D1;
+  background-color: #b3c0d1;
   color: #333;
   text-align: center;
   line-height: 60px;
 }
 
-
-
 .el-main {
-  background-color: #E9EEF3;
+  background-color: #e9eef3;
   color: #333;
   text-align: center;
 }
@@ -46,6 +63,19 @@ body > .el-container {
 
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
+}
+
+.el-container.main-container{
+  height: calc(100% - 60px);
+}
+
+.content-wrap {
+  background-color: white;
+  height: calc(100% - 60px);
+}
+
+.main {
+  height: 100%;
 }
 </style>
 

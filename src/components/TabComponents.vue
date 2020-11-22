@@ -63,6 +63,7 @@ export default {
       this.editableTabsValue = to.path;
       let tabs = JSON.parse(JSON.stringify(this.editableTabs));
       if (!tabs.find((f) => f.name === to.path)) {
+        //if (!to.meta.label) return;
         let data = {
           title: to.meta.label,
           name: to.path,
@@ -87,11 +88,13 @@ export default {
       if (this.$route.path !== val) this.$router.push({ path: val });
     },
     $route: function (to) {
+     // console.log(to)
       this.addTab(to);
     },
   },
   mounted() {
-    this.addTab(this.$route);
+    // console.log(this.$route)
+   // this.addTab(this.$route);
   },
 };
 </script>
