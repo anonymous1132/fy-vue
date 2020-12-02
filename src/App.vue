@@ -1,6 +1,13 @@
 <template>
   <div id="app">
-    <el-container><el-header>head</el-header></el-container>
+    <el-container>
+      <el-header>
+        <div class="header-wrap">
+          <img :src="require('./assets/logo.png')" height="40px" />
+          <span class="header-title">OpenUI</span>
+        </div>
+      </el-header>
+    </el-container>
     <el-container class="main-container">
       <el-aside width="auto"
         ><Menu :active="$store.getters.editableTabsValue"></Menu
@@ -42,18 +49,13 @@ body {
 .el-footer {
   background-color: #b3c0d1;
   color: #333;
-  text-align: center;
-  line-height: 60px;
 }
 
-.el-main {
+.main-container > .el-main {
   background-color: #e9eef3;
   color: #333;
   text-align: center;
-}
-
-body > .el-container {
-  margin-bottom: 40px;
+  padding: 0;
 }
 
 .el-container:nth-child(5) .el-aside,
@@ -65,7 +67,7 @@ body > .el-container {
   line-height: 320px;
 }
 
-.el-container.main-container{
+.el-container.main-container {
   height: calc(100% - 60px);
 }
 
@@ -75,6 +77,20 @@ body > .el-container {
 }
 
 .main {
+  height: 100%;
+}
+
+.header-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  padding-left:10px ;
+}
+
+.header-wrap {
+  display: flex;
+  align-items: center;
   height: 100%;
 }
 </style>

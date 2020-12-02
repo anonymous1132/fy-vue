@@ -38,7 +38,9 @@ export default {
           ],
         },
         { title: "导航二", index: "/content/2" },
-        { title: "导航三", children: [] },
+        { title: "导航三", children: [
+           { title: "关于", index: "/about" },
+        ] },
       ],
     };
   },
